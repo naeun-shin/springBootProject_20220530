@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+	    <table >
+	    	<a style="padding-left:25%" th:href="@{/tableInsert}"> 등록 </a>
+	    	<thead>
+		    	<th>No</th>
+				<th>제목</th>
+				<th>내용</th>
+				<th>작성자</th>
+				<th>날짜</th>
+			</thead>
+			<tbody>
+			<tr th:each="list: ${list}">
+				<td th:text="${list.index}"></td>
+			    <td><a th:href="'/readTable/'+${list.index}" th:text="${list.title}"></a></td>
+			    <td th:text="${list.content}"></td>
+			    <td th:text="${list.writer}"></td>
+			    <td th:text="${list.date}"></td>
+			</tr>
+			</tbody>		
+	    </table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springBootProject.mapper.TableMapper">
+		<select id="selectTableList" resultType="com.springBootProject.dto.TableDTO">
+		SELECT
+			index,
+			title,
+			writer,
+			content,
+			to_char(write_date, 'MM-DD-YYYY') as date
+		FROM
+			public.tb_board;
+	</select>
+	
+	<select id= "readTable" resultType="com.springBootProject.dto.TableDTO">
+		SELECT
+			index,
+			title,
+			writer,
+			content,
+			to_char(write_date, 'MM-DD-YYYY') as date
+		FROM
+			public.tb_board
+		WHERE
+			index = #{index};
+	</select>
+	
+	<insert id="insertTable" parameterType="com.springBootProject.dto.TableDTO">
+	 	INSERT INTO public.tb_board
+			("index", title, writer, "content", write_date)
+	 	VALUES
+			(nextval('tb_board_index_seq'), #{title}, #{writer}, #{content}, now());
+	 
+	 </insert>
+	 <update id="updateTable" parameterType="com.springBootProject.domain.Table"> 	
+		UPDATE
+			public.tb_board
+		SET
+			title=#{title},
+			"content"=#{content},
+			write_date= now();
+		WHERE
+			index = #{index};
+	 </update>
+	 
+	 <delete id="deleteTable" parameterType = "int">
+	DELETE from tb_board
+	WHERE index = #{index}
+	 </delete>
+</mapper>
