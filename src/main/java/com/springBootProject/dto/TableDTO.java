@@ -42,16 +42,5 @@ public class TableDTO {
 	public String toString() {
 		return "TableDTO [index=" + index + ", title=" + title + ", content=" + content + ", writer=" + writer
 				+ ", date=" + date + "]";
-	}
-	public TableDTO(int index, String title, String content, String writer, String date) {
-		this.index = index;
-		this.title = title;
-		this.content = content;
-		this.writer = writer;
-		this.date = date;
-	}
-
-
- 
-	
+	}	
 }
