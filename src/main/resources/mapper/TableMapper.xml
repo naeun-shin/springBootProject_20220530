@@ -33,6 +33,7 @@
 	 
 	 </insert>
 	 <update id="updateTable" parameterType="com.springBootProject.dto.TableDTO"> 	
+		<![CDATA[
 		UPDATE
 			public.tb_board
 		SET
@@ -41,8 +42,8 @@
 			write_date= now();
 		WHERE
 			index = #{index};
+	 	]]>
 	 </update>
-	 
 	 <delete id="deleteTable" parameterType = "int">
 	DELETE from tb_board
 	WHERE index = #{index}

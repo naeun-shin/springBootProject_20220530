@@ -7,15 +7,18 @@
 <body>
     <main role="main" class="container">
       <div class="starter-template">
-      
+      <form id="frm" method="post">
         <table class ="table table-bordered">
           <thead>
             <caption>글 읽기</caption>
-          </thead>
+           </thead>
           <tbody>
             <tr>
               <th>제목</th>
-              <td th:text="${tableDto.title}"></td>
+              <td>
+              		<input type="text" id="title" name="title" 
+							th:value="${tableDto.title}"/>
+              </td>
             </tr>
             <tbody>
             <tr>
@@ -28,15 +31,30 @@
             </tr>
             <tr>
               <th>본문 내용</th>
-              <td th:text="${tableDto.content}"></td>
+              <td>
+              <textarea title="내용" id="contents" name="contents" 
+						th:text="${tableDto.content}"></textarea>
+				</td>
             </tr>
           </tbody>
         </table>
-
+        <input type="hidden" name="index" th:value="${tableDto.index}">
+        </form>
+		 <input type="button" id="edit" value="수정하기">
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+         <script type="text/javascript">
+         $(document).ready(function(){
+        	 console.log($("#edit"));
+             $("#edit").on("click", function(){
+                 var frm = $("#frm")[0];
+                 console.log(frm);
+                 frm.action = "updateTable";
+                 frm.submit();
+             });
+         })
+         </script>
         <!-- 수정/삭제 -->
         <div>
-        	<a th:href="@{'/tableUpdate/'+${tableDto.index}}">
-        		<button>수정</button></a>
             <!-- 삭제 -->
             <form th:action="@{'/deleteTable/' + ${tableDto.index}}" method="post">
          	<input type="hidden" name="_method" value="delete"/>

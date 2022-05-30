@@ -9,6 +9,25 @@
 </head>
 <body>
 <h1>게시글 수정</h1>
+ <form id="frm" method="post">
+	 <table class="board_detail">
+	   <colgroup>
+	       <col width="15%"/>
+	       <col width="35%"/>
+	       <col width="15%"/>
+	       <col width="35%"/>
+	   </colgroup>
+	   <caption>게시글 상세내용</caption>
+	   <tbody>
+	   <tr>
+           <th scope="row">글 번호</th>
+           <td th:text="${board.boardIdx}"></td>
+       </tr>
+	   </tbody>
+	</table>
+ 
+ </form>
+
         <form th:object="${tableDto}" th:action="@{'/updateTable/' + ${tableDto.index}}" method="post">
         	 <input type="hidden" name="_method" value="put"/>
         	<input type="hidden" name="index" th:value="${tableDto.index}"/>
