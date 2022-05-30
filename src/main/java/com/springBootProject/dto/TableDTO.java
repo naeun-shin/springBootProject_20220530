@@ -1,8 +1,5 @@
 package com.springBootProject.dto;
 
-import com.springBootProject.domain.Table;
-
-import lombok.Builder;
 
 public class TableDTO {
 	private int index;
@@ -46,17 +43,6 @@ public class TableDTO {
 		return "TableDTO [index=" + index + ", title=" + title + ", content=" + content + ", writer=" + writer
 				+ ", date=" + date + "]";
 	}
-
-    
-    @Builder
-    public TableDTO(int index, String title, String content, String writer, String date) {
-        this.index = index;
-        this.writer = writer;
-        this.title = title;
-        this.content = content;
-        this.date = date;
-    }
-	
 
 	
 }

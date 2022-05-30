@@ -1,20 +1,25 @@
 package com.springBootProject.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springBootProject.dto.TableDTO;
 import com.springBootProject.service.TableService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class TableController {
 	
@@ -40,7 +45,7 @@ public class TableController {
     }
     
     //등록 완료
-    @PostMapping("/insesrtTable")		//작성된 게시글 등록 기능 메소드, html의 form 태그 action에서 입력한 주소
+    @PostMapping("/insesrtTable")
     public String insertTable(@ModelAttribute TableDTO tableDto) throws Exception{
     	tableService.insertTable(tableDto);
     	return "redirect:/tableMain";	//게시글 리스트로 이동
@@ -58,22 +63,26 @@ public class TableController {
     	return mav;
     }
     
-    //수정 페이지 	접근
-  @RequestMapping("/tableUpdate/{index}")
-   public String updateTable(@PathVariable int index, Model model) throws Exception{
+    //수정 페이지 접근
+   @RequestMapping("/tableUpdate/{index}")
+   public ModelAndView tableUpdate(@PathVariable int index) throws Exception{
 	   	TableDTO tableDto = tableService.readTable(index);
-	   	model.addAttribute("tableDto", tableDto);
-	   return "updateTable";
+	   	ModelAndView mav = new ModelAndView();
+	   	mav.addObject("tableDto", tableDto);
+	   	mav.setViewName("updateTable.html");
+	   return mav;
 	   
    }
-  
-  @PutMapping("/updateTable")
-  	public String updateTable(TableDTO tableDto) {
-//	 tableService.updateTable(tableDto);
-	  return "redirect:/tableMain";
+   
+  	//수정
+  	@RequestMapping(value="/updateTable/{index}", produces = "application/json", method = RequestMethod.PUT)
+  	public String updateTable(@RequestBody TableDTO tableDto, @PathVariable int index) throws Exception {
+  		tableService.updateTable(index);
+  		 return "redirect:/tableMain";
   }
+ 
     //삭제
-    @RequestMapping("/deleteTable/{index}")
+    @DeleteMapping("/deleteTable/{index}")
     public String delete(@PathVariable int index) {
         tableService.deleteTable(index);
         return "redirect:/tableMain";

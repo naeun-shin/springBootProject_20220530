@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springBootProject.domain.Table;
 import com.springBootProject.dto.TableDTO;
 import com.springBootProject.mapper.TableMapper;
 
@@ -41,9 +40,9 @@ public class TableService {
 
 	}
     @Transactional
-	public void updateTable(TableDTO tableDto) {
+	public void updateTable(int index) {
 		// TODO Auto-generated method stub
-    	tableMapper.updateTable(tableDto);
+    	tableMapper.updateTable(index);
 		
 	}
 

@@ -18,7 +18,7 @@ public interface TableMapper {
 
 	void deleteTable(int index);
 
-	void updateTable(TableDTO tableDto);
+	void updateTable(int index);
 	
 
 }
