@@ -32,7 +32,7 @@
 			(nextval('tb_board_index_seq'), #{title}, #{writer}, #{content}, now());
 	 
 	 </insert>
-	 <update id="updateTable" parameterType="int"> 	
+	 <update id="updateTable" parameterType="com.springBootProject.dto.TableDTO"> 	
 		UPDATE
 			public.tb_board
 		SET

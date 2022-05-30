@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
 </head>
 <body>
-
-
-
 <h1>게시글 수정</h1>
-<div class="col-md-12">
-    <div class="col-md-4">
-   
-        <form th:object="${tableDto}" th:action="@{'/updateTable/' + ${tableDto.index}}" method="POST">
+        <form th:object="${tableDto}" th:action="@{'/updateTable/' + ${tableDto.index}}" method="post">
+        	 <input type="hidden" name="_method" value="put"/>
+        	<input type="hidden" name="index" th:value="${tableDto.index}"/>
             <div class="form-group">
                 <label for="index">글 번호</label>
                 <input type="number" name="index" class="form-control" id="index" th:value="${tableDto.index}" readonly>
@@ -29,10 +28,8 @@
                 <label for="content">내용</label>
                 <textarea class="form-control" name="content" id="content">[[${tableDto.content}]]</textarea>
             </div>
-            <button id="delete-btn">수정</button>
+       <input type="submit" th:value="수정">
         <a role="button" class="btn btn-secondary" th:href="@{/tableMain}">취소</a>
         </form>
-    </div>
-</div>
 </body>
 </html>

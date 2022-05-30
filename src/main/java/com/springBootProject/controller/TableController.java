@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -75,9 +76,9 @@ public class TableController {
    }
    
   	//수정
-  	@RequestMapping(value="/updateTable/{index}", produces = "application/json", method = RequestMethod.PUT)
+  	@PutMapping(value="/updateTable/{index}")
   	public String updateTable(@RequestBody TableDTO tableDto, @PathVariable int index) throws Exception {
-  		tableService.updateTable(index);
+  		tableService.updateTable(tableDto);
   		 return "redirect:/tableMain";
   }
  

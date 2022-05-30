@@ -39,10 +39,10 @@ public class TableService {
     	return tableMapper.readTable(index);
 
 	}
-    @Transactional
-	public void updateTable(int index) {
+    
+	public void updateTable(TableDTO tableDto) {
 		// TODO Auto-generated method stub
-    	tableMapper.updateTable(index);
+    	tableMapper.updateTable(tableDto);
 		
 	}
 
