@@ -1,7 +1,6 @@
 package com.springBootProject.mapper;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 
 import com.springBootProject.dto.TableDTO;
@@ -18,6 +17,6 @@ public interface TableMapper {
 	void deleteTable(int index);
 
 	void updateTable(TableDTO tableDto);
-	
+
 
 }

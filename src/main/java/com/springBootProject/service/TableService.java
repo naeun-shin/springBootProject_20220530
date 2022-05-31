@@ -42,7 +42,7 @@ public class TableService {
     
 	public void updateTable(TableDTO tableDto) {
 		// TODO Auto-generated method stub
-    	tableMapper.updateTable(tableDto);
+		tableMapper.updateTable(tableDto);
 		
 	}
 

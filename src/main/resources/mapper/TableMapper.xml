@@ -32,17 +32,17 @@
 			(nextval('tb_board_index_seq'), #{title}, #{writer}, #{content}, now());
 	 
 	 </insert>
-	 <update id="updateTable" parameterType="com.springBootProject.dto.TableDTO"> 	
+	 <update id="updateTable" parameterType="com.springBootProject.dto.TableDTO">
 		UPDATE
 			public.tb_board
 		SET
 			title=#{title},
 			"content"=#{content},
-			write_date= now();
+			writer = #{writer},
+			write_date= now()
 		WHERE
 			index = #{index};
 	 </update>
-	 
 	 <delete id="deleteTable" parameterType = "int">
 	DELETE from tb_board
 	WHERE index = #{index}

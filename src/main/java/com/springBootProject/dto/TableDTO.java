@@ -38,6 +38,18 @@ public class TableDTO {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	public TableDTO() {
+		super();
+	}
+	
+	public TableDTO(int index, String title, String content, String writer, String date) {
+		super();
+		this.index = index;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.date = date;
+	}
 	@Override
 	public String toString() {
 		return "TableDTO [index=" + index + ", title=" + title + ", content=" + content + ", writer=" + writer
